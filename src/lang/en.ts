@@ -13,7 +13,10 @@ export default {
 
     },
     login: {
+        title: "Hui Management System",
         account: "account",
-        password: "password"
+        password: "password",
+        logIn: "Login",
+        any: "any",
     }
 }

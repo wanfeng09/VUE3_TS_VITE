@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import routerBase from './views/base/routerBase.vue'
 </script>
 
 <template>
   <div >
-    App
-    <routerBase />
+   首页
   </div>
 </template>
 

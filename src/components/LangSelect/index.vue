@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import routerBase from './views/base/routerBase.vue'
 </script>
 
 <template>
   <div >
-    App
-    <routerBase />
+    语言切换组件
   </div>
 </template>
 

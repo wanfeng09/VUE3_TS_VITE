@@ -1,6 +1,6 @@
 export default {
     home: {
-        hello: '{msg} 世界',
+        hello: '{msg} world',
         car: 'car | cars',
         apple: 'no apples | one apple | {count} apples',
         banana: 'no bananas | {n} banana | {n} bananas',
@@ -13,7 +13,10 @@ export default {
 
     },
     login: {
-        account: "账号",
-        password: "密码"
+        title: "Hui Management System",
+        account: "account",
+        password: "password",
+        logIn: "Login",
+        any: "any",
     }
 }
