@@ -17,7 +17,7 @@ function goUrl() {
   <div >
     App
     <el-button @click="goUrl">路由跳转</el-button>
-    <p>获取当前路由信息:{{ route.path + "---" + route.name }}</p>
+    <p>获取当前路由信息:{{ route.path }}</p>
   </div>
 </template>
 

@@ -18,4 +18,11 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "/src/style/bem.scss";`
+        }
+      }
+    }
 })

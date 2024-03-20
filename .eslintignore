@@ -1,4 +1,6 @@
-dist/*.js
-src/assets
-tests/unit/coverage
-public/**/*.js
+/node_modules/
+/public/
+.vscode
+.idea
+auto-import.d.ts
+components.d.ts

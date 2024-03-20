@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 // 导入i18n
 import i18n from '@/lang'
 // 导入路由
 import router from './router'
-const pinia = createPinia()
+
+import pinia from './store'
 const app = createApp(App)
 // 注册i18n
 app.use(i18n)

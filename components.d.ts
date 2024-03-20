@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
+    HLangSelect: typeof import('./src/components/LangSelect/HLangSelect.vue')['default']
     I18nBase: typeof import('./src/components/I18nBase.vue')['default']
     LangSelect: typeof import('./src/components/LangSelect/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

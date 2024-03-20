@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import routerBase from './views/base/routerBase.vue'
+import HRouterBase from './views/base/HRouterBase.vue'
 </script>
 
 <template>
   <div >
     App
-    <routerBase />
+    <h-routerBase />
   </div>
 </template>
 

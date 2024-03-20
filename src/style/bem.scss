@@ -1,0 +1,49 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+$namespace: 'wan' !default;
+$block-sel: '-' !default;
+$elem-sel: "__" !default;
+$mod-sel: '--' !default;
+
+.#{$namespace + '-contain'}{
+    padding: 20px;
+}
+
+@mixin bfc{
+    height: 100%;
+    overflow: hidden;
+}
+
+@mixin b($value){
+    $B: #{$namespace + $block-sel + $value};
+    .#{$B}{
+        @content;
+    }
+    ##{$B}{
+        @content;
+    }
+}
+
+@mixin e($value){
+    $selector: &;
+    @at-root{
+        #{$selector + $elem-sel + $value}{
+            @content
+        }
+    }
+}
+
+@mixin m($value){
+    $selector: &;
+    @at-root{
+        #{$selector + $mod-sel + $value}{
+            @content
+        }
+    }
+}
