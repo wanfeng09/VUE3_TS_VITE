@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import HRouterBase from './views/base/HRouterBase.vue'
+import { useI18n } from "vue-i18n";
+const { locale,messages } = useI18n()
 </script>
 
 <template>
-  <div >
-    App
-    <h-routerBase />
-  </div>
+  <el-config-provider :locale="messages[locale]">
+    <router-view />
+  </el-config-provider>
 </template>
 
 <style scoped>

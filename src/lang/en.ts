@@ -7,7 +7,7 @@ export default {
         current: 'Current Datetime'
     },
     route: {
-
+        "home": "Home"
     },
     navbae: {
 

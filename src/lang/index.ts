@@ -3,15 +3,20 @@ import { createI18n } from "vue-i18n";
 // User defined lang
 import enLocale from "./en";
 import zhLocale from "./zh";
+import zhCnEle from 'element-plus/dist/locale/zh-cn.mjs'
+import enEle from 'element-plus/dist/locale/en.mjs'
 
 const messages = {
   en: {
+    ...enEle,
     ...enLocale,
   },
   zh: {
+    ...zhCnEle,
     ...zhLocale,
   },
 };
+
 // export const getLocale = () => {
 //   return "en";
 // };

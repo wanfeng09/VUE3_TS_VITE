@@ -5,8 +5,9 @@ import App from './App.vue'
 import i18n from '@/lang'
 // 导入路由
 import router from './router'
-
+// 导入store
 import pinia from './store'
+import 'virtual:svg-icons-register'
 const app = createApp(App)
 // 注册i18n
 app.use(i18n)

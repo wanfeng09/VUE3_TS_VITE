@@ -6,7 +6,7 @@ html,body{
     overflow: hidden;
 }
 
-$namespace: 'wan' !default;
+$namespace: 'h' !default;
 $block-sel: '-' !default;
 $elem-sel: "__" !default;
 $mod-sel: '--' !default;
@@ -15,12 +15,14 @@ $mod-sel: '--' !default;
     padding: 20px;
 }
 
+
+
 @mixin bfc{
     height: 100%;
     overflow: hidden;
 }
 
-@mixin b($value){
+@mixin s($value){
     $B: #{$namespace + $block-sel + $value};
     .#{$B}{
         @content;
@@ -30,7 +32,7 @@ $mod-sel: '--' !default;
     }
 }
 
-@mixin e($value){
+@mixin ds($value){
     $selector: &;
     @at-root{
         #{$selector + $elem-sel + $value}{
@@ -39,7 +41,7 @@ $mod-sel: '--' !default;
     }
 }
 
-@mixin m($value){
+@mixin dd($value){
     $selector: &;
     @at-root{
         #{$selector + $mod-sel + $value}{
