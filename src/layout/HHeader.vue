@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { Expand, Fold, CaretBottom } from '@element-plus/icons-vue'
 import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
-import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from "vue-i18n"
 const route = useRoute()
@@ -21,8 +19,8 @@ function languageChange(){
   <div class="h-header h-header__flex h-header--between">
     <div class="h-header__left h-header__flex">
       <div >
-        <el-icon :size="26" v-if="collapse"><Expand /></el-icon>
-        <el-icon :size="26" v-else><Fold /></el-icon>
+        <el-icon :size="26" v-if="collapse"><i-ep-Expand /></el-icon>
+        <el-icon :size="26" v-else><i-ep-Fold /></el-icon>
       </div>
       <div class="h-header__text">{{ route.name }}
       </div>
@@ -36,7 +34,7 @@ function languageChange(){
       <el-dropdown ref="dropdownRef">
         <span class="el-dropdown-link">
           <el-avatar :size="40" :src="avatarUrl" />
-          <el-icon><CaretBottom /></el-icon>
+          <el-icon><i-ep-CaretBottom /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
