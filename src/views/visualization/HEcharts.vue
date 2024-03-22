@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div >
+  <div class="h-contain">
    图表
   </div>
 </template>

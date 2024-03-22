@@ -13,6 +13,8 @@ $mod-sel: '--' !default;
 
 .#{$namespace + '-contain'}{
     padding: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 
 

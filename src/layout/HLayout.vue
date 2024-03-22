@@ -31,4 +31,7 @@ import HSidebar from './components/sidebar/HSidebar.vue';
     background-color: #2f6feb;
     color: #fff;
 }
+.el-main{
+  padding: 0;
+}
 </style>

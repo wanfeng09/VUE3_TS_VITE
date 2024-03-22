@@ -7,7 +7,19 @@ export default {
         current: 'Current Datetime'
     },
     route: {
-        "home": "Home"
+        "home": "Home",
+        "login": "Login",
+        "error": "Error",
+        "visual": "Visual",
+        "echarts": "Echarts",
+        "gmap": "G-Map",
+        "long": "Three-Long",
+        "base": "Base",
+        "i18n": "I18n",
+        "rou": "Router",
+        "drag": "Drag",
+        "square": "Square",
+        "layers": "Layers"
     },
     navbae: {
 

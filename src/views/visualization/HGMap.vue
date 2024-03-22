@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div >
+  <div class="h-contain">
    高德地图
   </div>
 </template>

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div >
+  <div class="h-contain">
    表格（增删改查）
   </div>
 </template>

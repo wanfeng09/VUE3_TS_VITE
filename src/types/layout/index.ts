@@ -4,9 +4,9 @@ export interface IMenuItem {
     path: string
     redirect?:string
     icon?: string
-    meta?: {
-        title?: string
-        icon?: string
+    meta: {
+        title: string
+        icon: string
         roles?: string[]
     }
     children?: IMenuItem[],

@@ -9,16 +9,13 @@ const routes: RouteRecordRaw[] = [
     name: 'Dashboard',
     component: HLayout,
     redirect: '/Dashboard',
+    meta: { title: 'route.home', icon: 'HomeFilled'},
     children: [
       {
         path: '/Dashboard',
         name: 'Dashboard',
         component: () => import('@/views/dashboard/HDashboard.vue'),
-        meta: {
-          title: '首页',
-          icon: 'ChatRound',
-          roles: ['admin', 'editor'],
-        },
+        meta: { title: 'route.home', icon: 'HomeFilled'},
       },
     ],
   },
@@ -26,21 +23,19 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/HLogin.vue'),
+    meta: { title: 'route.login', icon: 'QuestionFilled'},
   },
   {
     path: '/error',
     name: 'Error404',
     component: HLayout,
+    meta: { title: 'route.error', icon: 'CircleCloseFilled'},
     children: [
       {
         path: '/error',
         name: 'Error404',
         component: () => import('@/views/error/Error404.vue'),
-        meta: {
-          title: 'Error',
-          icon: 'dashboard',
-          roles: ['admin', 'editor'],
-        },
+        meta: { title: 'route.error', icon: 'CircleCloseFilled'},
       },
     ],
   },
@@ -61,27 +56,7 @@ const router = createRouter({
 })
 //   全局前置守卫
 router.beforeEach((to, from, next) => {
-  if (to.name !== from.name) {
-    NProgress.start()
-  }
-
-  window.document.title = to.meta.title
-    ? `${to.meta.title} | offbeat-ui`
-    : 'offbeat-ui'
-
-  // const isLogin = getToken()
-  const isLogin = true
-  if (isLogin) {
-    if (to.name === 'login') {
-      next('/')
-    } else {
-      next()
-    }
-  } else if (to.name !== 'login') {
-    next('/login')
-  } else {
-    next()
-  }
+  next()
 })
 //   全局后置钩子
 router.afterEach(() => {

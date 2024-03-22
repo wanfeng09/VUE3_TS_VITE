@@ -29,17 +29,17 @@ const handleSelect = (item: IMenuItem) => {
       :index="item.path"
       @click="handleSelect(item)"
     >
-      <el-icon v-if="item.meta?.icon">
-        <dynamic-icon :name="item.meta?.icon" />
+      <el-icon v-if="item.meta.icon">
+        <dynamic-icon :name="item.meta.icon" />
       </el-icon>
-      <template #title>{{ item.meta ? item.meta.title : item.name }}</template>
+      <template #title>{{ $t(item.meta.title) }}</template>
     </el-menu-item>
     <el-sub-menu v-else :index="item.name!">
       <template #title>
-        <el-icon v-if="item.icon">
-          <component :is="item.icon" />
-        </el-icon>
-        <span>{{ item.meta ? item.meta.title : item.name }}</span>
+        <el-icon v-if="item.meta.icon">
+        <dynamic-icon :name="item.meta.icon" />
+      </el-icon>
+        <span>{{ $t(item.meta.title) }}</span>
       </template>
       <!--  如果有子级数据使用递归组件 -->
       <h-sub-item :menu-list="item.children" />

@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 </script>
 <template>
-  <div>
+  <div class="h-contain">
     <p>{{ $t("home.hello", { msg: "你好" }) }}</p>
     <p>{{ $t("login.account") }}</p>
     <p>{{ t("home.car", 1) }}</p>

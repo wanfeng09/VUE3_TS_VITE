@@ -13,7 +13,9 @@
     "@element-plus/icons-vue": "^2.3.1",
     "element-plus": "^2.6.1",
     "nprogress": "^0.2.0",
+    "ol": "^9.0.0",
     "pinia": "^2.1.7",
+    "three": "^0.162.0",
     "vue": "^3.4.21",
     "vue-i18n": "^9.10.2",
     "vue-router": "^4.3.0"
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@iconify/json": "^2.2.194",
     "@types/nprogress": "^0.2.3",
+    "@types/three": "^0.162.0",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "@vitejs/plugin-vue": "^5.0.4",

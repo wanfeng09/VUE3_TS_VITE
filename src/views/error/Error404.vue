@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div >
+  <div class="h-contain">
    404
   </div>
 </template>

@@ -14,7 +14,7 @@ function goUrl() {
 </script>
 
 <template>
-  <div >
+  <div class="h-contain">
     App
     <el-button @click="goUrl">路由跳转</el-button>
     <p>获取当前路由信息:{{ route.path }}</p>
