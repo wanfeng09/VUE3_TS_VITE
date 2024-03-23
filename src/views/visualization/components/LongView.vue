@@ -8,26 +8,26 @@ import {
   Object3D,
   DataTexture,
   Group,
-  Object3DEventMap,
   Material,
+  Mesh,
+  MeshPhysicalMaterial
 } from 'three'
+import type { Object3DEventMap } from 'three';
 
 // 问题:“THREE”指 UMD 全局，但当前文件是模块。请考虑改为添加导入。
 // 解决：使用 ES modules 的方式引入
 // import * as THREE from "three";
 
-import { isMeshType, isMeshPhysicalMaterial } from '@/types/threejs/index'
-
-// import { GUI } from "three/addons/libs/lil-gui.module.min.js";
-// import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-// import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-// import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 // 如果已经导入 @types/three 更换以下方式引入
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min'
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min'
+// import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 const params = {
   color: 0xffffff,
   transmission: 1,
@@ -80,12 +80,7 @@ function init(w: number, h: number) {
           gltf.scene.traverse(function (child: Object3D) {
             // child.type -> "Group" /"Mesh"
             // child.material.type -> "MeshStandardMaterial" / "MeshPhysicalMaterial"
-            if (
-              isMeshType(child) &&
-              isMeshPhysicalMaterial(child.material) &&
-              child.isMesh &&
-              child.material.isMeshPhysicalMaterial
-            ) {
+            if(child instanceof Mesh && child.isMesh && child.material.isMeshPhysicalMaterial){
               mesh = child
               material = mesh.material
             }
@@ -133,21 +128,21 @@ function setSize(w: number, h: number) {
 function controlStyle() {
   gui.value = new GUI()
   gui.value.addColor(params, 'color').onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if(material instanceof MeshPhysicalMaterial){
       material.color.set(params.color)
     }
     render()
   })
 
   gui.value.add(params, 'transmission', 0, 1, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.transmission = params.transmission
       render()
     }
   })
 
   gui.value.add(params, 'opacity', 0, 1, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.opacity = params.opacity
       const transparent = params.opacity < 1
 
@@ -160,28 +155,28 @@ function controlStyle() {
   })
 
   gui.value.add(params, 'metalness', 0, 1, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.metalness = params.metalness
       render()
     }
   })
 
   gui.value.add(params, 'roughness', 0, 1, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.roughness = params.roughness
       render()
     }
   })
 
   gui.value.add(params, 'ior', 1, 2, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.ior = params.ior
       render()
     }
   })
 
   gui.value.add(params, 'thickness', 0, 5, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.thickness = params.thickness
       render()
     }
@@ -191,7 +186,7 @@ function controlStyle() {
     .addColor(params, 'attenuationColor')
     .name('attenuation color')
     .onChange(function () {
-      if (material && isMeshPhysicalMaterial(material)) {
+      if (material instanceof MeshPhysicalMaterial) {
         material.attenuationColor.set(params.attenuationColor)
         render()
       }
@@ -200,21 +195,21 @@ function controlStyle() {
   gui.value
     .add(params, 'attenuationDistance', 0, 1, 0.01)
     .onChange(function () {
-      if (material && isMeshPhysicalMaterial(material)) {
+      if (material instanceof MeshPhysicalMaterial) {
         material.attenuationDistance = params.attenuationDistance
         render()
       }
     })
 
   gui.value.add(params, 'specularIntensity', 0, 1, 0.01).onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.specularIntensity = params.specularIntensity
       render()
     }
   })
 
   gui.value.addColor(params, 'specularColor').onChange(function () {
-    if (material && isMeshPhysicalMaterial(material)) {
+    if (material instanceof MeshPhysicalMaterial) {
       material.specularColor.set(params.specularColor)
       render()
     }
@@ -224,7 +219,7 @@ function controlStyle() {
     .add(params, 'envMapIntensity', 0, 1, 0.01)
     .name('envMap intensity')
     .onChange(function () {
-      if (material && isMeshPhysicalMaterial(material)) {
+      if (material instanceof MeshPhysicalMaterial) {
         material.envMapIntensity = params.envMapIntensity
         render()
       }

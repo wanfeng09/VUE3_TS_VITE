@@ -14,9 +14,9 @@ import {
   Scene,
   WebGLRenderer,
 } from "three";
-// import { OrbitControls } from 'three/addons/controls/OrbitControls.js'; 
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'; 
 // 如果已经导入 @types/three 更换以下方式引入
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { ref } from "vue";
 const threeRef = ref()
 

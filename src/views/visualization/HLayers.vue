@@ -4,14 +4,16 @@
    
 <script setup lang="ts">
 import 'ol/ol.css'
-import { Map, View, Feature } from 'ol'
+// import { Map, View, Feature } from 'ol'
+import { Map, View } from 'ol'
 import OSM from 'ol/source/OSM'
-import VectorSource from 'ol/source/Vector'
-import Cluster from 'ol/source/Cluster'
-import { Vector as VectorLayer, Tile as TileLayer } from 'ol/layer'
-import { Style, Fill as StyleFill, Stroke as StyleStroke, Circle as StyleCircle, Text as StyleText } from 'ol/style'
-import { Circle as GeomCircle, Point as GeomPoint, LineString as GeomLineString, Polygon as GeomPolygon } from 'ol/geom'
-import { Draw as InteractionDraw } from 'ol/interaction'
+import { Tile as TileLayer } from 'ol/layer'
+// import VectorSource from 'ol/source/Vector'
+// import Cluster from 'ol/source/Cluster'
+// import { Vector as VectorLayer, Tile as TileLayer } from 'ol/layer'
+// import { Style, Fill as StyleFill, Stroke as StyleStroke, Circle as StyleCircle, Text as StyleText } from 'ol/style'
+// import { Circle as GeomCircle, Point as GeomPoint, LineString as GeomLineString, Polygon as GeomPolygon } from 'ol/geom'
+// import { Draw as InteractionDraw } from 'ol/interaction'
 import { onMounted } from 'vue'
 
 onMounted(() => {
