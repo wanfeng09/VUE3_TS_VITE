@@ -19,7 +19,8 @@ export default {
         "rou": "Router",
         "drag": "Drag",
         "square": "Square",
-        "layers": "Layers"
+        "layers": "Layers",
+        "animation": "Animation Map"
     },
     navbae: {
 

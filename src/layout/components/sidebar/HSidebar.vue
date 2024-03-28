@@ -9,7 +9,7 @@ import { useRouter } from 'vue-router'
 defineOptions({
   name: 'HSidebar',
 })
-const activeMenu = ref('2')
+const activeMenu = ref('1')
 const route = useRoute()
 const router = useRouter()
 // let menuList = ref<IMenuItem[]>([])
@@ -34,7 +34,7 @@ watch(
   () => route,
   val => {
     const { meta } = val
-    activeMenu.value = meta.activePath as string
+    activeMenu.value = meta.id as string
   },
   { immediate: true, deep: true },
 )

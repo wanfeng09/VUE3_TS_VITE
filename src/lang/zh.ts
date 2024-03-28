@@ -19,7 +19,8 @@ export default {
         "rou": "路由基础",
         "drag": "拖拽",
         "square": "正方形",
-        "layers": "地图Layers"
+        "layers": "地图Layers",
+        "animation": "轨迹监控"
     },
     navbae: {
 

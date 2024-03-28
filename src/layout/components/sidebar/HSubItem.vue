@@ -26,7 +26,7 @@ const handleSelect = (item: IMenuItem) => {
   <template v-for="item in menuList" :key="item.id">
     <el-menu-item
       v-if="!item.children || item.children.length <= 1"
-      :index="item.path"
+      :index="item.meta.id"
       @click="handleSelect(item)"
     >
       <el-icon v-if="item.meta.icon">

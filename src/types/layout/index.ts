@@ -5,6 +5,7 @@ export interface IMenuItem {
     redirect?:string
     icon?: string
     meta: {
+        id: string
         title: string
         icon: string
         roles?: string[]
