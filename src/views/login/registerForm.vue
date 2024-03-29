@@ -3,7 +3,7 @@ import { User, Lock, Message } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { useLoginName } from '@/store/index'
+import { useLoginStore } from '@/store/index'
 interface RegisterReq {
   username: string
   password: string
@@ -31,7 +31,7 @@ const submit = (formEl: FormInstance | undefined) => {
   }
   formEl.validate(async (validate: boolean) => {
     if (validate) {
-      useLoginName().setLoginName(registerParam.username)
+      useLoginStore().setLoginName(registerParam.username)
       router.push('/')
     } else {
       return false

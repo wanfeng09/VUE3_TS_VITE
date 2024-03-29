@@ -2,13 +2,13 @@
 import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useLoginName } from '@/store/index'
+import { useLoginStore,useLayoutStore } from '@/store/index'
 import { useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
-let collapse = ref(true)
-const store = useLoginName()
+const store = useLoginStore()
+const layoutStore = useLayoutStore()
 const avatarUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
 function languageChange() {
   if (locale.value === 'zh') {
@@ -20,6 +20,7 @@ function languageChange() {
 
 function logout() {
   store.setLoginName('')
+  localStorage.clear()
   router.push('/login')
 }
 </script>
@@ -27,11 +28,11 @@ function logout() {
 <template>
   <div class="h-header h-header__flex h-header--between">
     <div class="h-header__left h-header__flex">
-      <div>
-        <el-icon :size="26" v-if="collapse"><i-ep-Expand /></el-icon>
-        <el-icon :size="26" v-else><i-ep-Fold /></el-icon>
+      <div style="padding: 0 10px 0 0;">
+        <el-icon :size="26" v-if="layoutStore.isCollapse" @click="layoutStore.updateCollapse(false)"><i-ep-Expand /></el-icon>
+        <el-icon :size="26" v-else @click="layoutStore.updateCollapse(true)"><i-ep-Fold /></el-icon>
       </div>
-      <div class="h-header__text">{{ route.name }}</div>
+      <div>{{ route.name }}</div>
     </div>
 
     <div class="h-header__right h-header__flex">
@@ -43,7 +44,7 @@ function logout() {
         <span class="el-dropdown-link">
           <div class="h-header__flex">
             <el-avatar :size="40" :src="avatarUrl" />
-            <div style="padding: 0 10px;">{{ store.username }}</div>
+            <div style="padding: 0 10px;">{{ store.getLoginName }}</div>
             <el-icon><i-ep-CaretBottom /></el-icon>
           </div>
         </span>
@@ -80,9 +81,6 @@ function logout() {
   padding: 0 20px;
   @include ds(flex) {
     @include flex;
-  }
-  @include ds(text) {
-    padding-left: 10px;
   }
   @include ds(left) {
     flex: 1;

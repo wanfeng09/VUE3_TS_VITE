@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import NProgress from 'nprogress'
 import HLayout from '@/layout/HLayout.vue'
+import { useLoginStore } from '@/store/index'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -77,7 +78,18 @@ const router = createRouter({
 })
 //   全局前置守卫
 router.beforeEach((to, from, next) => {
-  next()
+  NProgress.start()
+  // 我们想要在这里使用 store,确保 pinia 实例被激活
+  const store = useLoginStore()
+  if(to.path === '/login'){
+    next()
+  }else{
+    if(store.getLoginName){
+      next()
+    }else{
+      next("/login")
+    }
+  }
 })
 //   全局后置钩子
 router.afterEach(() => {

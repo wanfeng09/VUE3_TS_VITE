@@ -9,10 +9,11 @@ import router from './router'
 import pinia from './store'
 import 'virtual:svg-icons-register'
 const app = createApp(App)
+// 注册pinia
+app.use(pinia)
 // 注册i18n
 app.use(i18n)
 // 注册路由
 app.use(router)
-// 注册pinia
-app.use(pinia)
+
 app.mount('#app')
