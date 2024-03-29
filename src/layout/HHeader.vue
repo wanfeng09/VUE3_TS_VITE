@@ -9,6 +9,7 @@ const router = useRouter()
 const { locale } = useI18n()
 const store = useLoginStore()
 const layoutStore = useLayoutStore()
+let username = localStorage.getItem('h-username')
 const avatarUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
 function languageChange() {
   if (locale.value === 'zh') {
@@ -44,7 +45,7 @@ function logout() {
         <span class="el-dropdown-link">
           <div class="h-header__flex">
             <el-avatar :size="40" :src="avatarUrl" />
-            <div style="padding: 0 10px;">{{ store.getLoginName }}</div>
+            <div style="padding: 0 10px;">{{ username }}</div>
             <el-icon><i-ep-CaretBottom /></el-icon>
           </div>
         </span>

@@ -4,16 +4,7 @@ export const useLoginStore = defineStore('loginName',{
          username: '',
          password: ''
     }),
-    getters: {
-        getLoginName(): string {
-            if(localStorage.getItem('h-username')){
-               this.username = localStorage.getItem('h-username') as string
-                return this.username || '异常'
-            }else{
-                return ''
-            }
-        }
-    },
+    getters: {},
     actions: {
          setLoginName(val: string){
              this.username = val
