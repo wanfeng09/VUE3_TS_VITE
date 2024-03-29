@@ -20,7 +20,9 @@ export default {
         "drag": "拖拽",
         "square": "正方形",
         "layers": "地图Layers",
-        "animation": "轨迹监控"
+        "animation": "轨迹监控",
+        "icon": "图标",
+        "grammar": "语法"
     },
     navbae: {
 

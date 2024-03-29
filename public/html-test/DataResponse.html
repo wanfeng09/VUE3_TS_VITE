@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 原数据
+        let person = {
+            name: '小明',
+            age: '18'
+        }
+        //#region
+        // 回顾vue2响应式原理  【Object.defineProperty()对属性的读取，修改进行拦截（数据劫持）】
+        // let p = {};
+        // //数据代理
+        // Object.defineProperty(p, "name", {
+        //     // 响应式
+        //     get() {
+        //         // 有人读取调用
+        //         return person.name;
+        //     },
+        //     set(value) {
+        //         // 有人修改调用
+        //         console.log(value);
+        //         person.name = value;
+        //     },
+        // });
+        //#endregion
+
+        //#region
+        // vue3的响应式
+        // const p = new Proxy(person, {}) 数据代理 
+        const p = new Proxy(person, {
+
+            // 调用了才是响应式数据 Reflect反射：对源对象的属性进行操作
+            set(target, propName, value) {
+                target[propName] = value
+                Reflect.set(target, propName, value)
+                console.log(`有人修改，增加p身上${propName}属性`, target, propName, value);
+            },
+            get(target, propName) {
+                console.log(`有人读取p身上${propName}属性`, target, propName);
+                // return target[propName] // 不写会undefined
+                return Reflect.get(target, propName)
+            },
+            // 删除
+            deleteProperty() {
+                // return delete target[propName]
+                return Reflect.deleteProperty(target, propName)
+            }
+        });
+        //#endregion
+
+        let obj = {
+            a: 1,
+            b: 2
+        }
+        // Object.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 3
+        //     }
+        // })
+        // Object.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 6
+        //     }
+        // })
+        //  报错  Uncaught TypeError: Cannot redefine property: c
+        // at Function.defineProperty
+
+        // 存在返回值 true false 可以捕捉错误
+        // const x = Reflect.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 2 // 不报错，返回第一个
+        //     }
+        // })
+        // console.log(x); // true
+        // const y = Reflect.defineProperty(obj, 'c', {
+        //     get() {
+        //         return 6
+        //     }
+        // })
+        // console.log(y); // false
+        // if(x){
+        //     console.log('操作成功');
+        // }else{
+        //     console.log('操作失败');
+        // }
+    </script>
+</body>
+
+</html>

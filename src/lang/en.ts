@@ -20,7 +20,9 @@ export default {
         "drag": "Drag",
         "square": "Square",
         "layers": "Layers",
-        "animation": "Animation Map"
+        "animation": "Animation Map",
+        "icon": "Icon",
+        "grammar": "Grammar"
     },
     navbae: {
 
