@@ -1,6 +1,3 @@
-<template>
-  <div ref="threeRef"></div>
-</template>
 
 <script setup lang="ts">
 import {
@@ -97,3 +94,7 @@ function init(w:number,h:number) {
 
 
 </script>
+
+<template>
+  <div ref="threeRef"></div>
+</template>

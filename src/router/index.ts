@@ -38,8 +38,14 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/HLogin.vue'),
-    meta: { title: 'route.login', icon: 'QuestionFilled',id: "3"},
+    meta: { title: 'route.login', icon: 'QuestionFilled',id: "3", hidden: true },
   },
+  // {
+  //   path: '/visual/echarts/screen',
+  //   name: 'HEchartsScreen',
+  //   component: () => import('@/views/visualization/HEcharts.vue'),
+  //   meta: { title: 'route.echarts',icon: 'Histogram' ,id: "7" , hidden: true }
+  // },
   {
     path: '/error',
     name: 'Error',

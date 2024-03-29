@@ -1,7 +1,3 @@
-<template>
-    <div id='h-map'></div>
-</template>
-   
 <script setup lang="ts">
 import 'ol/ol.css'
 // import { Map, View, Feature } from 'ol'
@@ -44,6 +40,10 @@ function initMap() {
 }
 
 </script>
+
+<template>
+    <div id='h-map'></div>
+</template>
    
 <style lang="scss" scoped>
 @include s(map) {

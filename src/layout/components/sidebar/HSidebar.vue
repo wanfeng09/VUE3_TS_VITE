@@ -19,7 +19,7 @@ const isCollapse = computed(() => store.isCollapse)
 const getMenu = async () => {
   // const data = await getMenus()
   router.options.routes.map(ele => {
-    if(ele.name !== "Login"){
+    if(!ele.meta?.hidden){
       routeList.value.push(ele)
     }
   })

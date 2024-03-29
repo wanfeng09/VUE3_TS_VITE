@@ -1,3 +1,22 @@
+<script setup lang="ts">
+// 必须按需导入
+defineProps({
+  isPlaying: {
+    type: Number,
+    default: 4,
+    required: false,
+  },
+});
+const emit = defineEmits(["playLine", "carLocation"]);
+function playLine() {
+  emit("playLine");
+}
+
+function carLocation() {
+  emit("carLocation");
+}
+</script>
+
 <template>
   <div style="width: 326px; font-size: 12px; color: #333">
     <div
@@ -80,22 +99,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-// 必须按需导入
-defineProps({
-  isPlaying: {
-    type: Number,
-    default: 4,
-    required: false,
-  },
-});
-const emit = defineEmits(["playLine", "carLocation"]);
-function playLine() {
-  emit("playLine");
-}
-
-function carLocation() {
-  emit("carLocation");
-}
-</script>
