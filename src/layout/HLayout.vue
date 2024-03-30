@@ -12,8 +12,11 @@ const store = useLayoutStore()
       <el-container>
         <el-header><h-header /></el-header>
         <el-main>
-          <!-- 主体部分 -->
-          <router-view />
+          <router-view v-slot="{ Component }">
+            <transition mode="out-in">
+              <component :is="Component" />
+            </transition>
+          </router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -25,6 +28,16 @@ const store = useLayoutStore()
 </template>
 
 <style lang="scss" scoped>
+// 过度效果
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 .el-container {
   width: 100%;
   @include bfc;
