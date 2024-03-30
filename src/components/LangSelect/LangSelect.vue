@@ -1,11 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div >
-    语言切换组件
-  </div>
+  <div>语言切换组件</div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

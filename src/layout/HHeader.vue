@@ -2,14 +2,13 @@
 import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useLoginStore,useLayoutStore } from '@/store/index'
+import { useLoginStore, useLayoutStore } from '@/store/index'
 import { useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
 const store = useLoginStore()
 const layoutStore = useLayoutStore()
-let username = localStorage.getItem('h-username')
 const avatarUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
 function languageChange() {
   if (locale.value === 'zh') {
@@ -29,8 +28,10 @@ function logout() {
 <template>
   <div class="h-header h-header__flex h-header--between">
     <div class="h-header__left h-header__flex">
-      <div style="padding: 0 10px 0 0;">
-        <el-icon :size="26" v-if="layoutStore.isCollapse" @click="layoutStore.updateCollapse(false)"><i-ep-Expand /></el-icon>
+      <div style="padding: 0 10px 0 0">
+        <el-icon :size="26" v-if="layoutStore.isCollapse" @click="layoutStore.updateCollapse(false)"
+          ><i-ep-Expand
+        /></el-icon>
         <el-icon :size="26" v-else @click="layoutStore.updateCollapse(true)"><i-ep-Fold /></el-icon>
       </div>
       <div>{{ route.name }}</div>
@@ -45,7 +46,7 @@ function logout() {
         <span class="el-dropdown-link">
           <div class="h-header__flex">
             <el-avatar :size="40" :src="avatarUrl" />
-            <div style="padding: 0 10px;">{{ username }}</div>
+            <div style="padding: 0 10px">{{ store.username }}</div>
             <el-icon><i-ep-CaretBottom /></el-icon>
           </div>
         </span>

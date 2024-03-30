@@ -12,16 +12,16 @@ import {
   Mesh,
   MeshPhysicalMaterial
 } from 'three'
-import type { Object3DEventMap } from 'three';
+import type { Object3DEventMap } from 'three'
 
 // 问题:“THREE”指 UMD 全局，但当前文件是模块。请考虑改为添加导入。
 // 解决：使用 ES modules 的方式引入
 // import * as THREE from "three";
 
-import { GUI } from "three/addons/libs/lil-gui.module.min.js";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 // 如果已经导入 @types/three 更换以下方式引入
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -42,7 +42,7 @@ const params = {
   specularColor: 0xffffff,
   envMapIntensity: 1,
   lightIntensity: 1,
-  exposure: 1,
+  exposure: 1
 }
 let camera: PerspectiveCamera | null = null
 
@@ -61,7 +61,7 @@ const gui = ref()
 
 defineExpose({
   init,
-  clear,
+  clear
 })
 
 function clear() {
@@ -69,33 +69,29 @@ function clear() {
 }
 
 function init(w: number, h: number) {
-  const hdrEquirect = new RGBELoader()
-    .setPath('/')
-    .load('royal_esplanade_1k.hdr', function () {
-      hdrEquirect.mapping = EquirectangularReflectionMapping
+  const hdrEquirect = new RGBELoader().setPath('/').load('royal_esplanade_1k.hdr', function () {
+    hdrEquirect.mapping = EquirectangularReflectionMapping
 
-      new GLTFLoader()
-        .setPath('/')
-        .load('DragonAttenuation.glb', function (gltf) {
-          gltf.scene.traverse(function (child: Object3D) {
-            // child.type -> "Group" /"Mesh"
-            // child.material.type -> "MeshStandardMaterial" / "MeshPhysicalMaterial"
-            if(child instanceof Mesh && child.isMesh && child.material.isMeshPhysicalMaterial){
-              mesh = child
-              material = mesh.material
-            }
-          })
+    new GLTFLoader().setPath('/').load('DragonAttenuation.glb', function (gltf) {
+      gltf.scene.traverse(function (child: Object3D) {
+        // child.type -> "Group" /"Mesh"
+        // child.material.type -> "MeshStandardMaterial" / "MeshPhysicalMaterial"
+        if (child instanceof Mesh && child.isMesh && child.material.isMeshPhysicalMaterial) {
+          mesh = child
+          material = mesh.material
+        }
+      })
 
-          setSize(w, h)
+      setSize(w, h)
 
-          if (scene) {
-            scene.add(gltf.scene)
-            scene.environment = hdrEquirect
-            scene.background = hdrEquirect
-          }
-          render()
-        })
+      if (scene) {
+        scene.add(gltf.scene)
+        scene.environment = hdrEquirect
+        scene.background = hdrEquirect
+      }
+      render()
     })
+  })
 }
 function setSize(w: number, h: number) {
   renderer = new WebGLRenderer({ antialias: true, alpha: true })
@@ -128,7 +124,7 @@ function setSize(w: number, h: number) {
 function controlStyle() {
   gui.value = new GUI()
   gui.value.addColor(params, 'color').onChange(function () {
-    if(material instanceof MeshPhysicalMaterial){
+    if (material instanceof MeshPhysicalMaterial) {
       material.color.set(params.color)
     }
     render()
@@ -192,14 +188,12 @@ function controlStyle() {
       }
     })
 
-  gui.value
-    .add(params, 'attenuationDistance', 0, 1, 0.01)
-    .onChange(function () {
-      if (material instanceof MeshPhysicalMaterial) {
-        material.attenuationDistance = params.attenuationDistance
-        render()
-      }
-    })
+  gui.value.add(params, 'attenuationDistance', 0, 1, 0.01).onChange(function () {
+    if (material instanceof MeshPhysicalMaterial) {
+      material.attenuationDistance = params.attenuationDistance
+      render()
+    }
+  })
 
   gui.value.add(params, 'specularIntensity', 0, 1, 0.01).onChange(function () {
     if (material instanceof MeshPhysicalMaterial) {
@@ -241,7 +235,6 @@ function controlStyle() {
     guiElement.style.right = '0'
   }
   gui.value.open()
-
 }
 
 // function onWindowResize(w:number,h:number) {

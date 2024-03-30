@@ -13,41 +13,40 @@ import { Tile as TileLayer } from 'ol/layer'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-    initMap()
+  initMap()
 })
 
 function initMap() {
-    let map = new Map({
-        target: 'h-map',
-        layers: [
-            new TileLayer({
-                source: new OSM({})
-            }),
-        ],
-        view: new View({
-            // 设置中心点，广东
-            center: [113.12244, 23.009505],
-            projection: 'EPSG:4326',
-            // 设置缩放倍数
-            zoom: 17,
-            minZoom: 6,
-            maxZoom: 20
-        })
+  let map = new Map({
+    target: 'h-map',
+    layers: [
+      new TileLayer({
+        source: new OSM({})
+      })
+    ],
+    view: new View({
+      // 设置中心点，广东
+      center: [113.12244, 23.009505],
+      projection: 'EPSG:4326',
+      // 设置缩放倍数
+      zoom: 17,
+      minZoom: 6,
+      maxZoom: 20
     })
-    map.on('click',function(){
-        console.log('点击事件');
-    })
+  })
+  map.on('click', function () {
+    console.log('点击事件')
+  })
 }
-
 </script>
 
 <template>
-    <div id='h-map'></div>
+  <div id="h-map"></div>
 </template>
-   
+
 <style lang="scss" scoped>
 @include s(map) {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

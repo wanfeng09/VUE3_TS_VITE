@@ -1,53 +1,52 @@
-html,body{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 $namespace: 'h' !default;
 $block-sel: '-' !default;
-$elem-sel: "__" !default;
+$elem-sel: '__' !default;
 $mod-sel: '--' !default;
 
-.#{$namespace + '-contain'}{
-    padding: 20px;
-    height: 100%;
-    overflow: hidden;
+.#{$namespace + '-contain'} {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
 }
 
-
-
-@mixin bfc{
-    height: 100%;
-    overflow: hidden;
+@mixin bfc {
+  height: 100%;
+  overflow: hidden;
 }
 
-@mixin s($value){
-    $B: #{$namespace + $block-sel + $value};
-    .#{$B}{
-        @content;
-    }
-    ##{$B}{
-        @content;
-    }
+@mixin s($value) {
+  $B: #{$namespace + $block-sel + $value};
+  .#{$B} {
+    @content;
+  }
+  ##{$B} {
+    @content;
+  }
 }
 
-@mixin ds($value){
-    $selector: &;
-    @at-root{
-        #{$selector + $elem-sel + $value}{
-            @content
-        }
+@mixin ds($value) {
+  $selector: &;
+  @at-root {
+    #{$selector + $elem-sel + $value} {
+      @content;
     }
+  }
 }
 
-@mixin dd($value){
-    $selector: &;
-    @at-root{
-        #{$selector + $mod-sel + $value}{
-            @content
-        }
+@mixin dd($value) {
+  $selector: &;
+  @at-root {
+    #{$selector + $mod-sel + $value} {
+      @content;
     }
+  }
 }

@@ -22,7 +22,7 @@ export default [
       {
         path: '/base/grammar',
         name: 'HGrammarBase',
-        component: () => import('@/views/base/index.vue'),
+        component: () => import('@/views/base/TypeDeclaration.vue'),
         meta: { title: 'route.grammar', icon: 'Grape', id: '5-5' }
       },
       {

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useLayoutStore = defineStore('layout', () => {
+export const useLayoutStore = defineStore('layoutName', () => {
   const isCollapse = ref(false)
   // 全屏
   const ifFull = ref(false)

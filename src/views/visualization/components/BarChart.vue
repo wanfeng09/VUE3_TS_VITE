@@ -53,7 +53,7 @@ function fetchData(
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'shadow' },
-      formatter: function (params: {name: string, value: number}[]) {
+      formatter: function (params: { name: string; value: number }[]) {
         const item = params[0]
         return item.name + ' : ' + item.value
       }

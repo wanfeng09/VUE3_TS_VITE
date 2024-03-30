@@ -4,16 +4,16 @@ defineProps({
   isPlaying: {
     type: Number,
     default: 4,
-    required: false,
-  },
-});
-const emit = defineEmits(["playLine", "carLocation"]);
+    required: false
+  }
+})
+const emit = defineEmits(['playLine', 'carLocation'])
 function playLine() {
-  emit("playLine");
+  emit('playLine')
 }
 
 function carLocation() {
-  emit("carLocation");
+  emit('carLocation')
 }
 </script>
 
@@ -72,9 +72,7 @@ function carLocation() {
           </el-icon>
         </div>
         <div>
-          <el-icon color="#0078d4" size="18" @click.stop="carLocation"
-            ><i-ep-Aim
-          /></el-icon>
+          <el-icon color="#0078d4" size="18" @click.stop="carLocation"><i-ep-Aim /></el-icon>
         </div>
       </div>
       <div

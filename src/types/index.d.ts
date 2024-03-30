@@ -1,4 +1,4 @@
 export type personType = {
-    name: string
-    age: number
+  name: string
+  age: number
 }

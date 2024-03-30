@@ -11,11 +11,11 @@ import LiquidFill from './components/LiquidFill.vue'
 import type { IEchartsObj } from '@/types/echarts/index'
 import screenfull from 'screenfull'
 import { ElMessage } from 'element-plus'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
 
-const router = useRouter()
+// const router = useRouter()
 screenfull.on('change', () => {
   if (screenfull.isFullscreen) {
     store.updateFull(true)

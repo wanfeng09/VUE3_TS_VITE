@@ -4,10 +4,10 @@ let inconName = shallowRef()
 const props = defineProps({
   name: {
     type: String,
-    default: 'Compass',
-  },
+    default: 'Compass'
+  }
 })
-resolveIconComponent(props.name).then(res => {
+resolveIconComponent(props.name).then((res) => {
   inconName.value = res
 })
 </script>

@@ -1,40 +1,40 @@
 <script setup lang="ts">
-import { useTime } from "@/utils/useTime";
-import * as echarts from "echarts";
-import imgtop from "@/assets/img/head_bg.png";
-let url = imgtop;
-let time = ref('');
+import { useTime } from '@/utils/useTime'
+import * as echarts from 'echarts'
+import imgtop from '@/assets/img/head_bg.png'
+let url = imgtop
+let time = ref('')
 let returnTime = ref(0)
 onMounted(() => {
-  fetchData();
-});
+  fetchData()
+})
 
 returnTime.value = setInterval(() => {
-  time.value = useTime().nowTime;
-}, 1000);
+  time.value = useTime().nowTime
+}, 1000)
 
 onUnmounted(() => {
   clearInterval(returnTime.value)
-});
+})
 
 function fetchData() {
-  const mychart = echarts.init(document.getElementById("echartsTitle"));
+  const mychart = echarts.init(document.getElementById('echartsTitle'))
   const option = {
     graphic: {
       elements: [
         {
-          type: "text",
-          left: "center",
-          top: "center",
+          type: 'text',
+          left: 'center',
+          top: 'center',
           style: {
-            text: "可视化数据分析",
+            text: '可视化数据分析',
             fontSize: 30,
             // fontWeight: 'bold',
             lineDash: [0, 200],
             lineDashOffset: 0,
-            fill: "transparent",
-            stroke: "#fff",
-            lineWidth: 1,
+            fill: 'transparent',
+            stroke: '#fff',
+            lineWidth: 1
           },
           keyframeAnimation: {
             duration: 3000,
@@ -43,34 +43,34 @@ function fetchData() {
               {
                 percent: 0.7,
                 style: {
-                  fill: "transparent",
+                  fill: 'transparent',
                   lineDashOffset: 200,
-                  lineDash: [200, 0],
-                },
+                  lineDash: [200, 0]
+                }
               },
               {
                 // Stop for a while.
                 percent: 0.8,
                 style: {
-                  fill: "transparent",
-                },
+                  fill: 'transparent'
+                }
               },
               {
                 percent: 1,
                 style: {
-                  fill: "#fff",
-                },
-              },
-            ],
-          },
-        },
-      ],
-    },
-  };
-  mychart.setOption(option);
-  window.addEventListener("resize", function () {
-    mychart.resize();
-  });
+                  fill: '#fff'
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+  mychart.setOption(option)
+  window.addEventListener('resize', function () {
+    mychart.resize()
+  })
 }
 </script>
 

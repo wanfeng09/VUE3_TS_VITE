@@ -37,7 +37,12 @@ type PropsType = {
 // const { msg = "默认值" } = defineProps<PropsType>()
 
 // 当使用基于类型的声明时，我们失去了为 props 声明默认值的能力。这可以通过 withDefaults 编译器宏解决
-const props = withDefaults(defineProps<PropsType>(), {
+// const props = withDefaults(defineProps<PropsType>(), {
+//   msg: 'hello',
+//   age: 18,
+//   hobby: () => ['one', 'two']
+// })
+withDefaults(defineProps<PropsType>(), {
   msg: 'hello',
   age: 18,
   hobby: () => ['one', 'two']

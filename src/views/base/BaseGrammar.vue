@@ -26,7 +26,7 @@ defineOptions({
 })
 // --------------ref--------------------
 // 为ref设置泛型
-const str = ref<string>('hello world')
+// const str = ref<string>('hello world')
 //   const obj = ref<{
 //     name: string,
 //     age?:number,
@@ -75,7 +75,7 @@ function btnClick(e: MouseEvent) {
 
 // --------------Dom Ref--------------------
 // 查看类型
-const img = document.createElement('img')
+// const img = document.createElement('img')
 // 类型“never”上不存在属性src 解决：指定具体类型：HTMLImageElement
 const myImg = ref<HTMLImageElement | null>(null) // 获取实例
 // console.log(myImg.value) // null

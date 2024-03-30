@@ -2,39 +2,39 @@
 import * as echarts from 'echarts'
 const props = defineProps({
   title: {
-      type: String,
-      default: "今日总数",
-    },
+    type: String,
+    default: '今日总数'
+  },
   echartsId: {
     type: String,
-    default: "PieChart",
+    default: 'PieChart'
   },
   ewidth: {
     type: String,
-    default: "100%",
+    default: '100%'
   },
   eheight: {
     type: String,
-    default: "300px",
-  },
-});
+    default: '300px'
+  }
+})
 // 相父组件暴露方法
 defineExpose({
   epRef,
-  fetchData,
-});
+  fetchData
+})
 
-interface obj{
-  name:string,
-  value:number
+interface obj {
+  name: string
+  value: number
 }
 function epRef() {
   return echarts.init(document.getElementById(props.echartsId))
 }
 
-function fetchData(mychart:echarts.ECharts, data:obj[]) {
+function fetchData(mychart: echarts.ECharts, data: obj[]) {
   let total = 0
-  data.map(ele => {
+  data.map((ele) => {
     total += ele.value
   })
   const option = {
@@ -44,10 +44,10 @@ function fetchData(mychart:echarts.ECharts, data:obj[]) {
       show: true,
       trigger: 'item',
       // formatter: '{b} <br/>占比：{d}%', // 52 - 47
-      formatter: (params: { value: number; name: string; }) => {
-        if(params.value === 0){
+      formatter: (params: { value: number; name: string }) => {
+        if (params.value === 0) {
           return `${params.name}<br />${props.title}:0`
-        }else{
+        } else {
           let val = ((params.value / total) * 100).toFixed(0)
           return `${params.name}<br />${props.title}: ${val}%`
         }
@@ -56,93 +56,93 @@ function fetchData(mychart:echarts.ECharts, data:obj[]) {
     grid: {
       top: 'bottom',
       left: 10,
-      bottom: 10,
+      bottom: 10
     },
     series: [
+      {
+        zlevel: 1,
+        name: '区域',
+        type: 'pie',
+        selectedMode: 'single',
+        radius: ['42%', '68%'], // 指定内，外半径
+        startAngle: 60,
+        itemStyle: {
+          shadowColor: 'rgba(0, 0, 0, 0.2)',
+          shadowBlur: 10,
+          borderRadius: 2
+        },
+        data: data,
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 16,
+            fontWeight: 'bold',
+            color: '#fff'
+          }
+        },
+        label: {
+          color: '#fff'
+        }
+      },
+      {
+        type: 'pie',
+        selectedMode: 'single',
+        radius: '36%', // 指定内，外半径
+        center: ['50%', '50%'],
+        startAngle: 90,
+        itemStyle: {
+          labelLine: {
+            show: false
+          },
+          // borderWidth: 0.5,
+          // shadowBlur: 10,
+          // borderColor: '#4bf3f9',
+          // shadowColor: '#9bfeff',
+          // color: { // 圆环的颜色
+          //   colorStops: [{
+          //     offset: 0,
+          //     color: '#4bf3f9', // 0% 处的颜色
+          //   }, {
+          //     offset: 1,
+          //     color: '#4bf3f9', // 100% 处的颜色
+          //   }]
+          // },
+          color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+            {
+              offset: 1,
+              color: 'rgba(50,171,241, 0)'
+            },
+            {
+              offset: 0.5,
+              color: 'rgba(50,171,241, .4)'
+            },
+            {
+              offset: 0,
+              color: 'rgba(55,70,130, 0)'
+            }
+          ]),
+          shadowBlur: 60
+        },
+        data: [
           {
-            zlevel: 1,
-            name: "区域",
-            type: "pie",
-            selectedMode: "single",
-            radius: ["42%", "68%"], // 指定内，外半径
-            startAngle: 60,
-            itemStyle: {
-              shadowColor: "rgba(0, 0, 0, 0.2)",
-              shadowBlur: 10,
-              borderRadius: 2,
-            },
-            data: data,
-            emphasis: {
-              label: {
-                show: true,
-                fontSize: 16,
-                fontWeight: "bold",
-                color: "#fff",
-              },
-            },
+            value: total,
+            name: '',
             label: {
-              color: "#fff",
-            },
-          },
-          {
-            type: "pie",
-            selectedMode: "single",
-            radius: "36%", // 指定内，外半径
-            center: ["50%", "50%"],
-            startAngle: 90,
-            itemStyle: {
-              labelLine: {
-                  show: false,
-                },
-                // borderWidth: 0.5,
-                // shadowBlur: 10,
-                // borderColor: '#4bf3f9',
-                // shadowColor: '#9bfeff',
-                // color: { // 圆环的颜色
-                //   colorStops: [{
-                //     offset: 0,
-                //     color: '#4bf3f9', // 0% 处的颜色
-                //   }, {
-                //     offset: 1,
-                //     color: '#4bf3f9', // 100% 处的颜色
-                //   }]
-                // },
-                color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-                  {
-                    offset: 1,
-                    color: "rgba(50,171,241, 0)",
-                  },
-                  {
-                    offset: 0.5,
-                    color: "rgba(50,171,241, .4)",
-                  },
-                  {
-                    offset: 0,
-                    color: "rgba(55,70,130, 0)",
-                  },
-                ]),
-                shadowBlur: 60,
-            },
-            data: [
-              {
-                value: total,
-                name: '',
-                label: {
-                  show: true,
-                  formatter: `{a|${props.title}}`,
-                  rich: {
-                    a: {
-                      align: "center",
-                      color: "#4bf3f9",
-                      fontSize: 14,
-                    },
-                  },
-                  position: "center",
-                },
+              show: true,
+              formatter: `{a|${props.title}}`,
+              rich: {
+                a: {
+                  align: 'center',
+                  color: '#4bf3f9',
+                  fontSize: 14
+                }
               },
-            ],
-          },
-        ],
+              position: 'center'
+            }
+          }
+        ]
+      }
+    ]
   }
   mychart.setOption(option)
 }

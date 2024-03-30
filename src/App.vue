@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import en from 'element-plus/dist/locale/en.mjs'
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 </script>
 
@@ -11,5 +11,4 @@ const { locale } = useI18n()
   </el-config-provider>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

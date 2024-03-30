@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {resolveIconComponent} from "@/utils/resolve"
+import { resolveIconComponent } from '@/utils/resolve'
 let inconName = shallowRef()
-resolveIconComponent('Compass').then(res => {
+resolveIconComponent('Compass').then((res) => {
   inconName.value = res
 })
 </script>

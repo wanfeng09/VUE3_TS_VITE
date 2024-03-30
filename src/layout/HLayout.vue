@@ -19,8 +19,8 @@ const store = useLayoutStore()
     </el-container>
   </template>
   <template v-else>
-     <!-- 主体部分 -->
-     <router-view />
+    <!-- 主体部分 -->
+    <router-view />
   </template>
 </template>
 

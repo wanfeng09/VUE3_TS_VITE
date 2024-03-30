@@ -1,7 +1,7 @@
 # three
 
 npm install three
-npm install  @types/three -D
+npm install @types/three -D
 
 [官网](https://threejs.org/)
 

@@ -13,11 +13,9 @@ const iconName = computed(() => {
 </script>
 
 <template>
-  <svg :class="svgClass" aria-hidden="true" :style="{width: size + 'px',height: size + 'px'}">
+  <svg :class="svgClass" aria-hidden="true" :style="{ width: size + 'px', height: size + 'px' }">
     <use :xlink:href="iconName"></use>
   </svg>
 </template>
 
-<style lang="scss" scoped>
- 
-</style>
+<style lang="scss" scoped></style>

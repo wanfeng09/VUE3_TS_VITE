@@ -7,7 +7,7 @@ import { useLayoutStore } from '@/store'
 import { useRouter } from 'vue-router'
 // import RoutersApi from "@/mock/routes"
 defineOptions({
-  name: 'HSidebar',
+  name: 'HSidebar'
 })
 const activeMenu = ref('1')
 const route = useRoute()
@@ -18,8 +18,8 @@ const store = useLayoutStore()
 const isCollapse = computed(() => store.isCollapse)
 const getMenu = async () => {
   // const data = await getMenus()
-  router.options.routes.map(ele => {
-    if(!ele.meta?.hidden){
+  router.options.routes.map((ele) => {
+    if (!ele.meta?.hidden) {
       routeList.value.push(ele)
     }
   })
@@ -32,17 +32,17 @@ onBeforeMount(() => {
 })
 watch(
   () => route,
-  val => {
+  (val) => {
     const { meta } = val
     activeMenu.value = meta.id as string
   },
-  { immediate: true, deep: true },
+  { immediate: true, deep: true }
 )
 </script>
 
 <template>
   <div class="h-conatiner">
-    <div style="height: 60px;background-color: #2f6feb;color: #fff;">Logo</div>
+    <div style="height: 60px; background-color: #2f6feb; color: #fff">Logo</div>
     <el-scrollbar>
       <el-menu
         :default-active="activeMenu"

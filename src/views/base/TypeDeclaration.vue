@@ -18,9 +18,9 @@ import PropEmitBase from './PropEmitBase.vue'
 import BaseGrammar from './BaseGrammar.vue'
 
 // ------------------start------------------------------
-import { count,fnArrow,fn, position } from '@/types/base/old'
+import { count, fnArrow, fn, position } from '@/types/base/old'
 fn(position.bottom)
-const result = fnArrow(count,20)
+const result = fnArrow(count, 20)
 //   // --------------------end----------------------------
 
 function btnChange(val: string) {

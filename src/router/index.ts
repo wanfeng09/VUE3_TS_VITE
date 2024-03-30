@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import NProgress from 'nprogress'
 import HLayout from '@/layout/HLayout.vue'
-// import { useLoginStore } from '@/store/index'
+import { useLoginStore } from '@/store/index'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -30,7 +30,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/animationMap',
         name: 'AnimationMap',
-        component: () => import('@/views/visualization/animation-map/Map.vue'),
+        component: () => import('@/views/visualization/animation-map/GMap.vue'),
         meta: { title: 'route.animation', icon: 'VideoCameraFilled', id: '2' }
       }
     ]
@@ -80,15 +80,14 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   NProgress.start()
   // 我们想要在这里使用 store,确保 pinia 实例被激活
-  // const store = useLoginStore()
-  let username = localStorage.getItem('h-username')
-  if(to.path === '/login'){
+  const store = useLoginStore()
+  if (to.path === '/login') {
     next()
-  }else{
-    if(username){
+  } else {
+    if (store.username) {
       next()
-    }else{
-      next("/login")
+    } else {
+      next('/login')
     }
   }
 })

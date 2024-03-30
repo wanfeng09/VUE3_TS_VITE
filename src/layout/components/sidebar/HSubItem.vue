@@ -37,8 +37,8 @@ const handleSelect = (item: IMenuItem) => {
     <el-sub-menu v-else :index="item.name!">
       <template #title>
         <el-icon v-if="item.meta.icon">
-        <dynamic-icon :name="item.meta.icon" />
-      </el-icon>
+          <dynamic-icon :name="item.meta.icon" />
+        </el-icon>
         <span>{{ $t(item.meta.title) }}</span>
       </template>
       <!--  如果有子级数据使用递归组件 -->

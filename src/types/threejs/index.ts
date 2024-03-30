@@ -1,4 +1,11 @@
-import { Mesh,Object3D, Material, MeshPhysicalMaterial, MeshBasicMaterial, MeshStandardMaterial} from "three";
+import {
+  Mesh,
+  Object3D,
+  Material,
+  MeshPhysicalMaterial,
+  MeshBasicMaterial,
+  MeshStandardMaterial
+} from 'three'
 /**
  * 类型“Object3D<Object3DEventMap>”上不存在属性“material”
  * material 属性是 Mesh 类型的属性,而不是通用的 Object3D 类型
@@ -10,18 +17,24 @@ import { Mesh,Object3D, Material, MeshPhysicalMaterial, MeshBasicMaterial, MeshS
  * 如果条件成立，函数返回 true，表示对象是 THREE.Mesh 类型；否则，返回 false。
  */
 export function isMeshType(object?: Object3D): object is Mesh {
-    return object?.type === "Mesh";
+  return object?.type === 'Mesh'
 }
 
 // 类型“Material | Material[]”上不存在属性“isMeshPhysicalMaterial”
-export function isMeshPhysicalMaterial(material: Material | Material[]): material is MeshPhysicalMaterial {
-    return Array.isArray(material) ? false : material instanceof MeshPhysicalMaterial;
+export function isMeshPhysicalMaterial(
+  material: Material | Material[]
+): material is MeshPhysicalMaterial {
+  return Array.isArray(material) ? false : material instanceof MeshPhysicalMaterial
 }
 // 类型“Material | Material[]”上不存在属性“color”。
-export function isMaterialWithColor( material: Material | Material[]): material is MeshBasicMaterial {
-    return Array.isArray(material) ? false : material instanceof MeshBasicMaterial;
+export function isMaterialWithColor(
+  material: Material | Material[]
+): material is MeshBasicMaterial {
+  return Array.isArray(material) ? false : material instanceof MeshBasicMaterial
 }
 // 类型“Material | Material[]”上不存在属性“roughness”。
-export function isMeshStandardMaterial(material: Material | Material[]): material is MeshStandardMaterial {
-    return Array.isArray(material) ? false : material instanceof MeshStandardMaterial;
+export function isMeshStandardMaterial(
+  material: Material | Material[]
+): material is MeshStandardMaterial {
+  return Array.isArray(material) ? false : material instanceof MeshStandardMaterial
 }
