@@ -2,12 +2,23 @@ import { defineStore } from 'pinia'
 export const useLoginStore = defineStore('loginName', {
   state: () => ({
     username: '',
-    password: ''
+    password: '',
+    role: '',
+    token: ''
   }),
   getters: {},
   actions: {
-    setLoginName(val: string) {
+    setLoginName(val: string,token?: string) {
       this.username = val
+      this.token = token ?? ''
+    },
+    setRole(role: string){
+      this.role = role
+    },
+    logout(){
+      this.username = ''
+      this.role = ''
+      this.token = ''
     }
   },
   /**
@@ -29,6 +40,6 @@ export const useLoginStore = defineStore('loginName', {
    */
   // 
   persist: {
-    paths: ['username'],
+    paths: ['username','token'],
   }
 })

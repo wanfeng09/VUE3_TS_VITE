@@ -31,7 +31,7 @@ const submit = (formEl: FormInstance | undefined) => {
   }
   formEl.validate(async (validate: boolean) => {
     if (validate) {
-      useLoginStore().setLoginName(registerParam.username)
+      useLoginStore().setLoginName(registerParam.username,'token')
       router.push('/')
     } else {
       return false

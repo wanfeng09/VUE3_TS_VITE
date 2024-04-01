@@ -9,7 +9,8 @@ export interface IMenuItem {
     title: string
     icon: string
     roles?: string[]
-    hidden?: boolean
+    hidden?: boolean,
+    hasOnlyChildren?: boolean
   }
   children?: IMenuItem[]
 }

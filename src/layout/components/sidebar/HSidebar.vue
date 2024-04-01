@@ -3,9 +3,11 @@ import { ref, computed, watch, onBeforeMount } from 'vue'
 import HSubItem from './HSubItem.vue'
 import { useRoute } from 'vue-router'
 // import type { IMenuItem } from '@/types/layout/index'
-import { useLayoutStore } from '@/store'
+import { useLayoutStore,useLoginStore } from '@/store'
 import { useRouter } from 'vue-router'
 // import RoutersApi from "@/mock/routes"
+// 异步路由
+import { asyncRouter } from "@/router/index"
 defineOptions({
   name: 'HSidebar'
 })
@@ -15,15 +17,15 @@ const router = useRouter()
 // let menuList = ref<IMenuItem[]>([])
 let routeList = ref()
 const store = useLayoutStore()
+const loginStore = useLoginStore()
 const isCollapse = computed(() => store.isCollapse)
 const getMenu = async () => {
-  // const data = await getMenus()
-  router.options.routes.map((ele) => {
-    if (!ele.meta?.hidden) {
+  // console.log("所有路由",router.getRoutes());
+  router.getRoutes().map(ele => {
+    if(ele.children.length > 0 && !ele.meta.hidden){
       routeList.value.push(ele)
     }
   })
-  // menuList.value = RoutersApi || []
 }
 
 onBeforeMount(() => {

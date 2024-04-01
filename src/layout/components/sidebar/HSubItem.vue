@@ -19,20 +19,27 @@ const router = useRouter()
 
 const handleSelect = (item: IMenuItem) => {
   if (item.path === route.path) return
-  router.push(item.path!)
+  // 只有一个子菜单
+  if (item.redirect === 'noRedirect' && item.children?.length === 1) {
+    router.push(item.children[0].path)
+  } else {
+    router.push(item.path)
+  }
 }
 </script>
 <template>
   <template v-for="item in menuList" :key="item.id">
     <el-menu-item
       v-if="!item.children || item.children.length <= 1"
-      :index="item.meta.id"
+      :index="item.children ? item.children[0].meta.id : item.meta.id"
       @click="handleSelect(item)"
     >
-      <el-icon v-if="item.meta.icon">
-        <dynamic-icon :name="item.meta.icon" />
+      <el-icon v-if="item.children ? item.children[0].meta.icon : item.meta.icon">
+        <dynamic-icon :name="item.children ? item.children[0].meta.icon : item.meta.icon" />
       </el-icon>
-      <template #title>{{ $t(item.meta.title) }}</template>
+      <template #title>{{
+        $t(item.children ? item.children[0].meta.title : item.meta.title)
+      }}</template>
     </el-menu-item>
     <el-sub-menu v-else :index="item.name!">
       <template #title>
