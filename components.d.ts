@@ -31,8 +31,6 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    ElTabPane: typeof import('element-plus/es')['ElTabPane']
-    ElTabs: typeof import('element-plus/es')['ElTabs']
     HEchart: typeof import('./src/components/HEchart/HEchart.vue')['default']
     IEpAim: typeof import('~icons/ep/aim')['default']
     IEpCaretBottom: typeof import('~icons/ep/caret-bottom')['default']

@@ -188,7 +188,7 @@ function closeAllTags() {
         :key="item.path"
         :class="isActive(item.path) ? 'active' : ''"
         class="scrollbar-demo-item"
-        :to="{ path: item.path, fullPath: item.fullPath }"
+        :to="{ path: item.path }"
         @click.middle="closeSelectedTag(item)"
         ref="tagRef"
       >
