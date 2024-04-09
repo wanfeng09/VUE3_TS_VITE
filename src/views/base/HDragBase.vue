@@ -64,6 +64,12 @@ function dragenterEvent() {
 function dragoverEvent(e: DragEvent) {
   e.preventDefault() // 阻止默认事件【解决元素不允许别的元素拖拽放在上面】
 }
+onActivated(() => {
+  console.log('HDragBase activated')
+})
+onDeactivated(() => {
+  console.log('HDragBase deactivated')
+})
 </script>
 
 <style scoped>

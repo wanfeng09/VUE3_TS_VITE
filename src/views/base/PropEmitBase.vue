@@ -89,6 +89,8 @@ const btnChange = () => {
 const sendMed = () => {
   emit('sendMed', 1)
 }
+
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,6 +4,12 @@ let inconName = shallowRef()
 resolveIconComponent('Compass').then((res) => {
   inconName.value = res
 })
+onActivated(() => {
+  console.log('HIconBase activated')
+})
+onDeactivated(() => {
+  console.log('HIconBase deactivated')
+})
 </script>
 
 <template>

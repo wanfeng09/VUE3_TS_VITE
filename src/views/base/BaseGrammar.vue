@@ -24,6 +24,7 @@ import { computed, reactive, ref } from 'vue'
 defineOptions({
   name: 'BaseGrammar'
 })
+
 // --------------ref--------------------
 // 为ref设置泛型
 // const str = ref<string>('hello world')
@@ -91,6 +92,7 @@ const getImgRef = () => {
   // 非空断言(慎用):百分百确定的值才能使用
   console.log('获取地址', myImg.value!.src) // 解决：非空断言!
 }
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
+onActivated(() => {
+  console.log('HI18nBase activated')
+})
+onDeactivated(() => {
+  console.log('HI18nBase deactivated')
+})
 </script>
 <template>
   <div class="h-contain">

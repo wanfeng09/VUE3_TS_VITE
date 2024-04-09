@@ -7,6 +7,7 @@ import type { RouteInterface } from '@/types/layout/index'
 const route = useRoute()
 const routes = computed(() => useLoginStore().routers)
 const router = useRouter()
+
 // 获取标签数组
 const layoutStore = useLayoutStore()
 let affixTags = ref()

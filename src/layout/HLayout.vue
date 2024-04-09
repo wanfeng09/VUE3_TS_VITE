@@ -4,6 +4,7 @@ import SideBar from './components/sidebar/SideBar.vue'
 import HTags from './components/HTags.vue'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
+const cachedViews = computed(() => store.cachedViews)
 </script>
 
 <template>
@@ -19,7 +20,9 @@ const store = useLayoutStore()
           <div :style="{ width: '100%', height: store.ifTags ? 'calc(100% - 40px)' : '100%' }">
             <router-view v-slot="{ Component }">
               <transition mode="out-in">
-                <component :is="Component" />
+                <keep-alive :include="cachedViews">
+                  <component :is="Component" /> 
+                </keep-alive>
               </transition>
             </router-view>
           </div>
