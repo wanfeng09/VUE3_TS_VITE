@@ -4,7 +4,7 @@ import SideBar from './components/sidebar/SideBar.vue'
 import HTags from './components/HTags.vue'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
-const cachedViews = computed(() => store.cachedViews)
+const cachedViews = computed(() => store.cachedViews as string[])
 </script>
 
 <template>
