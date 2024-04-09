@@ -1,49 +1,29 @@
 <script setup lang="ts">
 import login from './loginForm.vue'
-import register from './registerForm.vue'
-const onClick = () => {
-  vari.value = !vari.value
-}
-let vari = ref<boolean>(false)
 </script>
 <template>
-  <div :class="{ container: true, 'sign-up-model': vari }">
-    <div class="inner-left-container">
-      <div class="login-content">
-        <h2 style="color: white">element-plus + ts + pinia</h2>
-        <ElButton type="primary" @click="onClick" size="large">触发动画</ElButton>
+  <div class="container">
+    <div class="box">
+      <div class="box-position">
+        <login></login>
       </div>
-      <!-- <img src="" class="image"> -->
-    </div>
-    <div class="inner-right-container">
-      <div class="register-content">
-        <h2 style="color: white">后台管理系统</h2>
-        <ElButton type="primary" @click="onClick" size="large">触发动画</ElButton>
-      </div>
-      <!-- <img src="" class="image"> -->
-    </div>
-    <div class="inner-sign-up-container">
-      <login :class="{ 'sign-up-model': vari }"></login>
-      <register :class="{ 'sign-up-model': vari }"></register>
     </div>
   </div>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: white;
   overflow: hidden;
   position: relative;
   display: flex;
-  flex-direction: row;
 }
 .container::before {
   content: '';
   width: 2000px;
   height: 2000px;
   background-color: #2f6feb;
-  /* background-color: rgb(160, 209, 35); */
   position: absolute;
   border-radius: 50%;
   transform: translateY(-50%);
@@ -52,92 +32,17 @@ let vari = ref<boolean>(false)
   transition: 1.8s ease-in-out;
   z-index: 2;
 }
-.inner-left-container {
-  width: 0;
-  flex: 1;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-  /* 上边|右边|下边|左边 */
-  padding: 3rem 10% 2rem 10%;
-  pointer-events: all;
-}
-.inner-right-container {
-  width: 0;
-  flex: 1;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  /* 上边|右边|下边|左边 */
-  padding: 3rem 10% 2rem 10%;
-  pointer-events: none;
-}
-.container .inner-right-container .register-content,
-.container .inner-right-container .image {
-  transform: translateX(1000px);
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-}
-.container .inner-left-container .login-content,
-.container .inner-left-container .image {
-  transform: translateX(0px);
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-}
-.image {
-  width: 100%;
-}
-.inner-sign-up-container {
-  width: 50%;
-  height: 50%;
+.box {
   position: absolute;
-  right: 0;
-  top: 20%;
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-/* 动画 */
-.container.sign-up-model::before {
-  transform: translate(100%, -50%);
-  transition: 1.8s ease-in-out;
-  right: 52%;
-}
-
-.container.sign-up-model .inner-right-container .register-content,
-.container.sign-up-model .inner-right-container .image {
-  transform: translateX(0px);
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-}
-
-.container.sign-up-model .inner-left-container .login-content,
-.container.sign-up-model .inner-left-container .image {
-  transform: translateX(-1000px);
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-}
-
-.container.sign-up-model .inner-sign-up-container {
   width: 50%;
-  height: 50%;
-  top: 20%;
-  right: 50%;
-  transition: 1s ease-in-out;
-  transition-delay: 0.5s;
-}
-
-.container.sign-up-model .inner-right-container {
-  pointer-events: all;
-}
-
-.container.sign-up-model .inner-left-container {
-  pointer-events: none;
+  height: 100%;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  &-position {
+    margin: auto;
+  }
 }
 </style>

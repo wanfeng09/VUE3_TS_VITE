@@ -1,6 +1,6 @@
 <template>
   <ElForm class="login-form" ref="loginRef" :model="loginParam" :rules="loginRules">
-    <h1 class="login-title">登录</h1>
+    <div class="login-title">登录</div>
     <ElFormItem prop="username">
       <ElInput
         placeholder="请输入账号"
@@ -54,7 +54,7 @@ const submit = (formEl: FormInstance | undefined) => {
   }
   formEl.validate(async (validate: boolean) => {
     if (validate) {
-      useLoginStore().setLoginName(loginParam.username,"token")
+      useLoginStore().setLoginName(loginParam.username, 'token')
       router.push('/')
     } else {
       return false
@@ -65,23 +65,19 @@ const submit = (formEl: FormInstance | undefined) => {
 
 <style scoped>
 .login-form {
-  grid-column: 1;
-  grid-row: 1;
-  opacity: 1;
+  width: 420px;
   transition: 1s ease-in-out;
   transition-delay: 0.5s;
-  /* 上下 | 左右 */
-  padding: 1% 25%;
-  z-index: 1;
-}
-.login-form.sign-up-model {
-  opacity: 0;
-  transition: 1s ease-in-out;
-  z-index: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid var(--el-border-color);
+  border-radius: 15px;
 }
 .login-title {
   text-align: center;
-  color: #444;
+  font-size: 26px;
+  padding: 0 0 30px 0;
 }
 .login-btn {
   width: 100%;

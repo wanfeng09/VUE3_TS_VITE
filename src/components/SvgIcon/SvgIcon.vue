@@ -18,4 +18,13 @@ const iconName = computed(() => {
   </svg>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.svg-icon {
+  width: 1.5em;
+  height: 1.5em;
+  // vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  display: block;
+}
+</style>

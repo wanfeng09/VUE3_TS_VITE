@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import HHeader from './HHeader.vue'
-import HSidebar from './components/sidebar/HSidebar.vue'
+import HHeader from './components/HHeader.vue'
+import SideBar from './components/sidebar/SideBar.vue'
+import HTags from './components/HTags.vue'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
 </script>
@@ -8,15 +9,20 @@ const store = useLayoutStore()
 <template>
   <template v-if="!store.ifFull">
     <el-container>
-      <el-aside><h-sidebar /></el-aside>
+      <el-aside><side-bar /></el-aside>
       <el-container>
         <el-header><h-header /></el-header>
         <el-main>
-          <router-view v-slot="{ Component }">
-            <transition mode="out-in">
-              <component :is="Component" />
-            </transition>
-          </router-view>
+          <div v-if="store.ifTags" style="height: 40px; box-sizing: border-box">
+            <h-tags />
+          </div>
+          <div :style="{ width: '100%', height: store.ifTags ? 'calc(100% - 40px)' : '100%' }">
+            <router-view v-slot="{ Component }">
+              <transition mode="out-in">
+                <component :is="Component" />
+              </transition>
+            </router-view>
+          </div>
         </el-main>
       </el-container>
     </el-container>

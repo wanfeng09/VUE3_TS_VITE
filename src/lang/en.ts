@@ -24,7 +24,11 @@ export default {
     icon: 'Icon',
     grammar: 'Grammar'
   },
-  navbae: {},
+  navbar: {
+    close: 'Close',
+    closeOther: 'Close Others',
+    closeAll: 'Close All'
+  },
   login: {
     title: 'Hui Management System',
     account: 'account',

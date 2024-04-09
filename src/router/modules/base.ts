@@ -4,43 +4,43 @@ export default {
   name: 'Base',
   component: HLayout,
   redirect: 'noRedirect',
-  meta: { title: 'route.base', icon: 'HelpFilled', id: '5' },
+  meta: { title: 'route.base', icon: 'HelpFilled', roles: ['edit'] },
   children: [
     {
       path: '/base/i18n',
       name: 'HI18nBase',
       component: () => import('@/views/base/HI18nBase.vue'),
-      meta: { title: 'route.i18n', icon: 'Fries', id: '5-1' }
+      meta: { title: 'route.i18n', icon: 'Fries' }
     },
     {
       path: '/base/icon',
       name: 'HIconBase',
       component: () => import('@/views/base/HIconBase.vue'),
-      meta: { title: 'route.icon', icon: 'Grape', id: '5-6' }
+      meta: { title: 'route.icon', icon: 'Grape' }
     },
     {
       path: '/base/grammar',
       name: 'HGrammarBase',
       component: () => import('@/views/base/TypeDeclaration.vue'),
-      meta: { title: 'route.grammar', icon: 'Grape', id: '5-5' }
+      meta: { title: 'route.grammar', icon: 'Grape' }
     },
     {
       path: '/base/router',
       name: 'HRouterBase',
       component: () => import('@/views/base/HRouterBase.vue'),
-      meta: { title: 'route.rou', icon: 'AddLocation', id: '5-2' }
+      meta: { title: 'route.rou', icon: 'AddLocation' }
     },
     {
       path: '/base/drag',
       name: 'HDragBase',
       component: () => import('@/views/base/HDragBase.vue'),
-      meta: { title: 'route.drag', icon: 'IceCream', id: '5-3' }
+      meta: { title: 'route.drag', icon: 'IceCream' }
     },
     {
       path: '/base/echarts',
       name: 'HEchartsBase',
       component: () => import('@/views/base/HEchartsBase.vue'),
-      meta: { title: 'route.echarts', icon: 'Orange', id: '5-4' }
+      meta: { title: 'route.echarts', icon: 'Orange' }
     }
   ]
 }

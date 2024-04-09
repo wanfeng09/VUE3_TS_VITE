@@ -24,7 +24,11 @@ export default {
     icon: '图标',
     grammar: '语法'
   },
-  navbae: {},
+  navbar: {
+    close: '关闭当前',
+    closeOther: '关闭其他',
+    closeAll: '关闭所有'
+  },
   login: {
     title: 'Hui Management System',
     account: 'account',

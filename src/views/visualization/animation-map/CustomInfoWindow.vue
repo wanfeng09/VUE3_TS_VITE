@@ -47,7 +47,7 @@ function carLocation() {
         "
       >
         <el-icon color="#0078d4" size="22"><i-ep-Location /></el-icon>
-        <div>广东省广州市花都区xxxxxxxxxxxxxxxxx121米</div>
+        <div>广东省广州市xxxxxxxxxxxxxxxxx121米</div>
       </div>
       <div
         style="

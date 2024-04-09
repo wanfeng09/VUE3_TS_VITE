@@ -1,13 +1,14 @@
 <template>
-  <div class="box" :class="{ full: fullVal }">
+  <div v-if="pageLoading" class="box" :class="{ full: fullVal }">
     <!-- <el-button type="primary" @click="fullVal = !fullVal">切换大屏</el-button> -->
     <div id="GaodeMap" ref="GaodeMap" />
   </div>
+  <div v-else class="h-contain">请输入你的高德地图key，并设置VITE_IF_MAP_KEY为true</div>
 </template>
 
 <script setup lang="ts">
 import AMapLoader from '@amap/amap-jsapi-loader'
-import { ref, onBeforeUnmount, onMounted, render, h} from 'vue'
+import { ref, onBeforeUnmount, onMounted, render, h } from 'vue'
 // import { getGeocode } from '@/api/map'
 import { lineArr } from './line'
 import { PlayStatus } from './enum'
@@ -29,8 +30,12 @@ let isPlaying = PlayStatus.STOP // 是否正在播放轨迹
 // let markerList = ref([]) // 标记点数组
 // let currentIndex = ref(0) // 当前播放到的轨迹点索引
 const zoomLevel = 17
+let pageLoading = ref(true)
 onMounted(() => {
-  init()
+  pageLoading.value = JSON.parse(import.meta.env.VITE_IF_MAP_KEY)
+  if (pageLoading.value) {
+    init()
+  }
 })
 
 function init() {
@@ -276,16 +281,16 @@ function carLocation() {
 
 // 获取天气
 // function getWeather() {
-  //构造 Weather 类
-  // let amapWeather = new a_map.Weather();
-  //查询实时天气信息，cityName 见 http://restapi.amap.com/v3/config/district?level=city&sublevel=0&extensions=all&output=xml&key=d9fba2f3196b6a4419358693a2b0d9a9
-  // amapWeather.getLive("北京");
-  //查询四天预报天气，包括查询当天天气信息
-  // amapWeather.getForecast("北京");
-  // a_map.event.addListener(amapWeather, "complete", function callback() {
-  //当查询成功时触发 complete 事件
-  // console.log("当查询成功时触发 complete 事件");
-  // });
+//构造 Weather 类
+// let amapWeather = new a_map.Weather();
+//查询实时天气信息，cityName 见 http://restapi.amap.com/v3/config/district?level=city&sublevel=0&extensions=all&output=xml&key=d9fba2f3196b6a4419358693a2b0d9a9
+// amapWeather.getLive("北京");
+//查询四天预报天气，包括查询当天天气信息
+// amapWeather.getForecast("北京");
+// a_map.event.addListener(amapWeather, "complete", function callback() {
+//当查询成功时触发 complete 事件
+// console.log("当查询成功时触发 complete 事件");
+// });
 // }
 // 路线标记点
 // function addLineMarker(coord: AMap.LngLat) {

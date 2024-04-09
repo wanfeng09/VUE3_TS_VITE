@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import { ref, computed, watch, onBeforeMount } from 'vue'
-import HSubItem from './HSubItem.vue'
+import SubItem from './SubItem.vue'
+import { useLayoutStore, useLoginStore } from '@/store'
 import { useRoute } from 'vue-router'
-// import type { IMenuItem } from '@/types/layout/index'
-import { useLayoutStore,useLoginStore } from '@/store'
-import { useRouter } from 'vue-router'
 // import RoutersApi from "@/mock/routes"
-// 异步路由
-import { asyncRouter } from "@/router/index"
 defineOptions({
-  name: 'HSidebar'
+  name: 'SideBar'
 })
-const activeMenu = ref('1')
+const activeMenu = ref('/dashboard')
 const route = useRoute()
-const router = useRouter()
 // let menuList = ref<IMenuItem[]>([])
 let routeList = ref()
 const store = useLayoutStore()
-const loginStore = useLoginStore()
 const isCollapse = computed(() => store.isCollapse)
 const getMenu = async () => {
   // console.log("所有路由",router.getRoutes());
-  router.getRoutes().map(ele => {
-    if(ele.children.length > 0 && !ele.meta.hidden){
+  // router.getRoutes().map(ele => {
+  //   if(ele.children.length > 0 && !ele.meta.hidden){
+  //     routeList.value.push(ele)
+  //   }
+  // })
+  useLoginStore().routers.map((ele) => {
+    if (ele.children && ele.children.length > 0 && !ele.meta?.hidden) {
       routeList.value.push(ele)
     }
   })
@@ -35,8 +34,8 @@ onBeforeMount(() => {
 watch(
   () => route,
   (val) => {
-    const { meta } = val
-    activeMenu.value = meta.id as string
+    const { path } = val
+    activeMenu.value = path
   },
   { immediate: true, deep: true }
 )
@@ -54,7 +53,7 @@ watch(
         :collapse="isCollapse"
         unique-opened
       >
-        <h-sub-item :menu-list="routeList" />
+        <sub-item :menu-list="routeList" />
       </el-menu>
     </el-scrollbar>
   </div>
