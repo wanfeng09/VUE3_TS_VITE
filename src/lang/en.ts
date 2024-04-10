@@ -27,7 +27,15 @@ export default {
   navbar: {
     close: 'Close',
     closeOther: 'Close Others',
-    closeAll: 'Close All'
+    closeAll: 'Close All',
+    globalConfig: "Global configuration",
+    themeColor: "Theme Color",
+    fontColor: "Font Color",
+    openTags: "Open Tags",
+    leftNav :"Left Navigation",
+    bgColor: "Background Color",
+    systemSetting: "System Setting",
+    activeFontColor: "Active Text Color"
   },
   login: {
     title: 'Hui Management System',

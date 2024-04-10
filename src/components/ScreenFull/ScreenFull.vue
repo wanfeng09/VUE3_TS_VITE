@@ -1,6 +1,6 @@
 <template>
-  <div @click="toggleFullscreen" style="padding-right: 20px">
-    <svg-icon :iconClass="isFullscreen ? 'narrow' : 'full'"></svg-icon>
+  <div @click="toggleFullscreen" style="padding: 0 10px;">
+    <svg-icon :iconClass="isFullscreen ? 'narrow' : 'full'" :size="20"></svg-icon>
   </div>
 </template>
 

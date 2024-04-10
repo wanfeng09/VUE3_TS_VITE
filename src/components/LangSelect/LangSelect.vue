@@ -12,7 +12,7 @@ function languageChange() {
 </script>
 
 <template>
-  <div @click="languageChange" style="padding-right: 20px">
+  <div @click="languageChange" style="padding: 0 10px;">
     <svg-icon :icon-class="locale === 'en' ? 'en' : 'zh'" />
   </div>
 </template>

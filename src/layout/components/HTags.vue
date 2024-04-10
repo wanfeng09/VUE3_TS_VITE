@@ -10,6 +10,8 @@ const router = useRouter()
 
 // 获取标签数组
 const layoutStore = useLayoutStore()
+const bg = computed(() => layoutStore.themeColor)
+const tagCircleBg = computed(() => layoutStore.fontColor)
 let affixTags = ref()
 // 是否激活
 function isActive(val: string) {
@@ -159,10 +161,14 @@ function handleChange(evt: Event, val: RouteInterface) {
   })
 }
 // 思路，跳转到其他页当做跳板，然后跳转到当前页
-// function refreshSelectedTag(val: RouteInterface) {
-//   if (val.name) {
-//   }
-// }
+// 通过if控制组件刷新
+function refreshSelectedTag(val: RouteInterface) {
+  if (val.name) {
+    layoutStore.delCachedView(val.name)
+    layoutStore.addCachedView(val.name)
+    layoutStore.refreshComponents()
+  }
+}
 // 关闭其他标签
 function closeOthersTags(val: RouteInterface) {
   if (val.name) {
@@ -199,7 +205,7 @@ function closeAllTags() {
           @visible-change="handleChange($event, item)"
           :id="item.path"
         >
-          <span :class="isActive(item.path) ? 'activeColor' : 'textColor'">
+          <span :class="['textColor', isActive(item.path) ? 'h-fontColor' : '']">
             {{ $t(item.meta.title)
             }}<el-icon
               v-if="!item.meta.affix"
@@ -210,7 +216,9 @@ function closeAllTags() {
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <!-- <el-dropdown-item @click="refreshSelectedTag(item)">刷新当页</el-dropdown-item> -->
+              <el-dropdown-item
+              :disabled="item.path !== route.path"
+               @click="refreshSelectedTag(item)">刷新当页</el-dropdown-item>
               <el-dropdown-item
                 @click="closeSelectedTag(item)"
                 :disabled="item.path == '/dashboard'"
@@ -276,19 +284,13 @@ function closeAllTags() {
     display: flex;
     align-items: center;
   }
-  .activeColor {
-    cursor: pointer;
-    color: #fff;
-    display: flex;
-    align-items: center;
-  }
   &.active {
-    background-color: #2f6feb;
+    background-color: v-bind(bg);
     color: #fff;
-    border-color: #2f6feb;
+    border-color: v-bind(bg);
     &::before {
       content: '';
-      background: #fff;
+      background: v-bind(tagCircleBg);
       display: inline-block;
       width: 8px;
       height: 8px;

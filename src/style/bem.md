@@ -67,14 +67,14 @@ $mod-sel: '--' !default;
 
 ```scss
 // vue style
-@include b(test) {
+@include s(test) {
   color: greenyellow;
 
-  @include e(inner) {
+  @include ds(inner) {
     color: red;
   }
 
-  @include m(success) {
+  @include dd(success) {
     background-color: green;
   }
 }

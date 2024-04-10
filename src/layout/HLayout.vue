@@ -4,20 +4,21 @@ import SideBar from './components/sidebar/SideBar.vue'
 import HTags from './components/HTags.vue'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
+
 const cachedViews = computed(() => store.cachedViews as string[])
 </script>
 
 <template>
-  <template v-if="!store.ifFull">
+  <template v-if="!store.isFullscreen">
     <el-container>
       <el-aside><side-bar /></el-aside>
       <el-container>
-        <el-header><h-header /></el-header>
+        <el-header class="h-bg"><h-header /></el-header>
         <el-main>
           <div v-if="store.ifTags" style="height: 40px; box-sizing: border-box">
             <h-tags />
           </div>
-          <div :style="{ width: '100%', height: store.ifTags ? 'calc(100% - 40px)' : '100%' }">
+          <div v-if="store.isReload" :style="{ width: '100%', height: store.ifTags ? 'calc(100% - 40px)' : '100%' }">
             <router-view v-slot="{ Component }">
               <transition mode="out-in">
                 <keep-alive :include="cachedViews">
@@ -58,8 +59,6 @@ const cachedViews = computed(() => store.cachedViews as string[])
 }
 .el-header {
   padding: 0;
-  background-color: #2f6feb;
-  color: #fff;
 }
 .el-main {
   padding: 0;

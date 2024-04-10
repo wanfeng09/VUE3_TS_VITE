@@ -27,7 +27,15 @@ export default {
   navbar: {
     close: '关闭当前',
     closeOther: '关闭其他',
-    closeAll: '关闭所有'
+    closeAll: '关闭所有',
+    globalConfig: "全局配置",
+    themeColor: "主题颜色",
+    fontColor: "字体颜色",
+    openTags: "打开标签栏",
+    leftNav :"左侧导航",
+    bgColor: "背景颜色",
+    systemSetting: "系统设置",
+    activeFontColor: "激活字体颜色"
   },
   login: {
     title: 'Hui Management System',

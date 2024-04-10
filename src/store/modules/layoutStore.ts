@@ -3,12 +3,26 @@ import type { RouteRecordName } from 'vue-router'
 import type { RouteInterface } from '@/types/layout/index'
 
 export const useLayoutStore = defineStore('layoutName', () => {
+  // 是否刷新组件
+  const isReload = ref(true)
   // 折叠
   const isCollapse = ref(false)
-  // 全屏
+  // 全屏（不存在布局组件）
   const ifFull = ref(false)
+  // 全屏(存在布局组件)
+  const isFullscreen = ref(false)
   // 标签显示
   const ifTags = ref(true)
+  // 主题颜色
+  const themeColor = ref('#2f6feb')
+  // 字体颜色
+  const fontColor = ref('#fff')
+  // 侧边栏背景色
+  const sidebarBgColor = ref('#f5f5f5')
+  // 侧边栏字体颜色
+  const sidebarFontColor = ref('#303133')
+  // 侧边栏激活颜色
+  const sidebarActiveColor = ref('#2f6feb')
   // 标签数组
   const visitedViews = ref<RouteInterface[]>([])
   // 缓存标签名数组
@@ -18,13 +32,40 @@ export const useLayoutStore = defineStore('layoutName', () => {
   const updateCollapse = (payload: boolean) => {
     isCollapse.value = payload
   }
-  // 是否全屏
+  // 是否全屏(存在布局组件)
+  const updateFullscreen = (payload: boolean) => {
+    isFullscreen.value = payload
+  }
+  // 是否全屏（不存在布局组件）
   const updateFull = (payload: boolean) => {
     ifFull.value = payload
   }
   // 控制标签
   const updateTags = (payload: boolean) => {
     ifTags.value = payload
+  }
+
+  // 改变主题颜色
+  const updateColors = (payload: string, val: number) => {
+    switch (val) {
+      case 0:
+        themeColor.value = payload
+        break
+      case 1:
+        fontColor.value = payload
+        break
+      case 2:
+        sidebarBgColor.value = payload
+        break
+      case 3:
+        sidebarFontColor.value = payload
+        break
+        case 5:
+          sidebarActiveColor.value = payload
+          break
+      default:
+        break
+    }
   }
 
   // 添加标签
@@ -81,14 +122,36 @@ export const useLayoutStore = defineStore('layoutName', () => {
     cachedViews.value = []
   }
 
+  // 刷新组件
+  const refreshComponents = () => {
+    isReload.value = false
+    setTimeout(() => {
+      isReload.value = true
+    }, 100)
+  }
+
+  // 重置仓库样式
+  const resetStore = () => {
+    localStorage.removeItem("layoutName")
+    location.reload()
+  }
+
   return {
+    isReload,
     isCollapse,
     ifFull,
+    isFullscreen,
     ifTags,
     visitedViews,
     cachedViews,
+    themeColor,
+    fontColor,
+    sidebarBgColor,
+    sidebarFontColor,
+    sidebarActiveColor,
     updateCollapse,
     updateFull,
+    updateFullscreen,
     addTags,
     addCachedView,
     delTags,
@@ -97,6 +160,13 @@ export const useLayoutStore = defineStore('layoutName', () => {
     delOtherCachedView,
     delAllTags,
     delAllCachedView,
-    updateTags
+    updateTags,
+    updateColors,
+    resetStore,
+    refreshComponents
   }
+},{
+  persist: {
+    paths: ['themeColor', 'fontColor', 'sidebarBgColor', 'sidebarFontColor', 'sidebarActiveColor'],
+  },
 })

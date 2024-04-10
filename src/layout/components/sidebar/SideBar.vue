@@ -12,6 +12,7 @@ const route = useRoute()
 // let menuList = ref<IMenuItem[]>([])
 let routeList = ref()
 const store = useLayoutStore()
+const sidebarBgColor = computed(() => store.sidebarBgColor)
 const isCollapse = computed(() => store.isCollapse)
 const getMenu = async () => {
   // console.log("所有路由",router.getRoutes());
@@ -43,13 +44,14 @@ watch(
 
 <template>
   <div class="h-conatiner">
-    <div style="height: 60px; background-color: #2f6feb; color: #fff">Logo</div>
+    <div class="h-bg h-fontColor" style="height: 60px;">Logo</div>
     <el-scrollbar>
       <el-menu
         :default-active="activeMenu"
         class="el-menu-vertical-demo"
-        background-color="#f5f5f5"
-        text-color="#000"
+        :background-color="sidebarBgColor"
+        :text-color="store.sidebarFontColor"
+        :active-text-color="store.sidebarActiveColor"
         :collapse="isCollapse"
         unique-opened
       >
@@ -63,9 +65,10 @@ watch(
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+  border-right: none
 }
 @include s(conatiner) {
   @include bfc;
-  background-color: #f5f5f5;
+  background-color: v-bind(sidebarBgColor)
 }
 </style>
