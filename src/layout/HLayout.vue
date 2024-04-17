@@ -9,7 +9,7 @@ const cachedViews = computed(() => store.cachedViews as string[])
 </script>
 
 <template>
-  <template v-if="!store.isFullscreen">
+  <template v-if="!store.ifFull"> 
     <el-container>
       <el-aside><side-bar /></el-aside>
       <el-container>

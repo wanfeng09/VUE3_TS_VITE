@@ -9,7 +9,9 @@ const router = useRouter()
 const store = useLoginStore()
 const layoutStore = useLayoutStore()
 const avatarUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
-
+function isCollapseChange() {
+  layoutStore.updateCollapse(!layoutStore.isCollapse)
+}
 // 退出登录
 function logout() {
   store.logout()
@@ -20,11 +22,11 @@ function logout() {
 <template>
   <div class="h-header h-header__flex h-header--between">
     <div class="h-header__left h-header__flex">
-      <div style="padding: 0 10px 0 0; display: flex; align-items: center">
-        <template v-if="layoutStore.isCollapse" @click="layoutStore.updateCollapse(false)">
-          <svg-icon iconClass="expand" :size="20"></svg-icon>
+      <div style="padding: 0 10px 0 0; display: flex; align-items: center" @click="isCollapseChange">
+        <template v-if="layoutStore.isCollapse">
+          <svg-icon iconClass="expand" :size="20" ></svg-icon>
         </template>
-        <template v-else @click="layoutStore.updateCollapse(true)">
+        <template v-else>
           <svg-icon iconClass="shrink" :size="20"></svg-icon>
         </template>
       </div>

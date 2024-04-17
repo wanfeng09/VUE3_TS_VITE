@@ -50,12 +50,12 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps({
-  ifFull: {
-    type: Boolean,
-    default: false
-  }
-})
+// defineProps({
+//   ifFull: {
+//     type: Boolean,
+//     default: false
+//   }
+// })
 </script>
 
 <style lang="scss" scoped>

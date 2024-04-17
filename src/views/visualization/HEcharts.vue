@@ -9,43 +9,14 @@ import LineChart from './components/LineChart.vue' // 折线图
 import PieChart from './components/PieChart.vue' // 饼图
 import LiquidFill from './components/LiquidFill.vue'
 import type { IEchartsObj } from '@/types/echarts/index'
-import screenfull from 'screenfull'
-import { ElMessage } from 'element-plus'
-// import { useRouter } from 'vue-router'
 import { useLayoutStore } from '@/store/index'
 const store = useLayoutStore()
 
-// const router = useRouter()
-screenfull.on('change', () => {
-  if (screenfull.isFullscreen) {
-    store.updateFull(true)
-    // router.push({
-    //   name: 'HEchartsScreen'
-    // })
-  } else {
-    store.updateFull(false)
-    // router.push({
-    //   name: 'HEcharts'
-    // })
-  }
-})
+
 // 全屏控制
-const ifFull = computed(() => store.ifFull)
-function screenfullClick() {
-  if (screenfull.isEnabled) {
-    if (ifFull.value) {
-      screenfull.exit()
-    } else {
-      screenfull.request()
-    }
-    // screenfull.toggle()
-  } else {
-    ElMessage({
-      showClose: true,
-      message: '你的浏览器不支持此操作！',
-      type: 'warning'
-    })
-  }
+const ifFull = computed(() => store.ifFull) 
+function fullClick() {
+ store.updateFull(!store.ifFull)
 }
 // 组件实例
 let BarLineChartRef = ref() // 柱状折线图
@@ -366,7 +337,7 @@ function activeDateClick(i: number) {
   <LayoutScreen>
     <template #header>
       <ToHeader>
-        <div @click="screenfullClick">
+        <div @click="fullClick">
           {{ ifFull ? '返回' : '全屏模式' }}
         </div>
       </ToHeader>
