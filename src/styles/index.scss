@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+$namespace: 'h' !default;
+$block-sel: '-' !default;
+$elem-sel: '__' !default;
+$mod-sel: '--' !default;
+
+.#{$namespace + '-contain'} {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@mixin bfc {
+  height: 100%;
+  overflow: hidden;
+}
+
+@mixin s($value) {
+  $B: #{$namespace + $block-sel + $value};
+  .#{$B} {
+    @content;
+  }
+  ##{$B} {
+    @content;
+  }
+}
+
+@mixin ds($value) {
+  $selector: &;
+  @at-root {
+    #{$selector + $elem-sel + $value} {
+      @content;
+    }
+  }
+}
+
+@mixin dd($value) {
+  $selector: &;
+  @at-root {
+    #{$selector + $mod-sel + $value} {
+      @content;
+    }
+  }
+}
